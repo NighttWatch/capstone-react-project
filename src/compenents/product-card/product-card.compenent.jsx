@@ -10,6 +10,7 @@ const ProductCard = ({ product }) => {
 
     const { name, price, imageUrl } = product;
 
+    console.log(name)
 
     const addProductToCart = () => addItemToCart(product);
 
