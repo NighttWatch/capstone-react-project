@@ -17,7 +17,8 @@ import {
     collection,
     writeBatch,
     query,
-    getDocs
+    getDocs,
+    DocumentSnapshot
 } from 'firebase/firestore';
 
 const firebaseConfig = {
@@ -61,13 +62,7 @@ export const getCategoriesAndDocuments = async () => {
     const q = query(collectionRef);
     
     const querySnapshot = await getDocs(q);
-    const categoryMap = querySnapshot.docs.reduce((acc, docsSnapshot) => {
-        const { title, items } = docsSnapshot.data(); 
-        acc[title.toLowerCase()] = items;
-        return acc;
-    }, {})
-
-    return categoryMap;
+    return querySnapshot.docs.map(docSnapshot => docSnapshot.data());
 }
 
 

@@ -16,6 +16,8 @@ import { createUserDocumentFromAuth, onAuthStateChangedListener } from "./utils/
 const App = () => {
   const dispatch = useDispatch(); // it is never change
 
+
+  //user
   useEffect(() => {
     const unsubscripbe = onAuthStateChangedListener((user) => {
         if(user) {
@@ -26,8 +28,6 @@ const App = () => {
 
     return unsubscripbe
   },[dispatch]);
-
-
 
 
   return (

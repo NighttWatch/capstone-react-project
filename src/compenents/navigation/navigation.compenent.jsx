@@ -7,10 +7,9 @@ import CartIcon from '../cart-icon/cart-icon.compenent';
 import CartDropDown from '../cart-dropdown/cart-dropdown.compenent';
 
 import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
-import { UserContext } from '../../context/user.context';
 import { CartContext } from '../../context/cart.context';
 
-import { selecCurrentUser } from '../../store/user/user.selector';
+import { selectCurrentUser } from '../../store/user/user.selector';
 
 import { signOutUser } from '../../utils/firebase/firebase.utils';
 
@@ -18,7 +17,7 @@ import { NavigationContainer, NavLink, NavLinks, LogoContainer } from './navigat
 
 // A fragment is usefull if you don't actually want to render some spesific moment.
 const Navigation = () => {
-  const currentUser = useSelector(selecCurrentUser)
+  const currentUser = useSelector(selectCurrentUser)
 
   //const { currentUser } = useContext(UserContext); 
   const { isCartOpen } = useContext(CartContext);
