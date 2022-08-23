@@ -42,7 +42,7 @@ const clearCartItem = (cartItems, cartItemToClear) =>
 
 
 
-export const SetIsCartOpen = (boolean) =>
+export const setIsCartOpen = (boolean) =>
  createAction(CART_ACTION_TYPES.SET_IS_CART_OPEN, boolean);
 
 export const addItemToCart = (cartItems, productToAdd) => {
@@ -50,7 +50,7 @@ export const addItemToCart = (cartItems, productToAdd) => {
  return createAction(CART_ACTION_TYPES.SET_CART_ITEMS,newCartItems);
 };
 
-export const removeItemToCart = (cartItems, cartItemToRemove) => {
+export const removeItemFromCart = (cartItems, cartItemToRemove) => {
  const newCartItems = removeCartItem(cartItems, cartItemToRemove);
  return createAction(CART_ACTION_TYPES.SET_CART_ITEMS,newCartItems);
 };
