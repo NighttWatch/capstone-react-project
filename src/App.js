@@ -8,9 +8,9 @@ import Authentication from './compenents/routes/authentication/authentication';
 import Shop from './compenents/routes/shop/shop.compenent';
 import Checkout from './compenents/routes/checkout/chechout';
 
-import { setCurrentUser } from "./store/user/user.action";
+import { checkUserSession } from "./store/user/user.action";
 
-import { createUserDocumentFromAuth, onAuthStateChangedListener } from "./utils/firebase/firebase.utils";
+
 
 
 const App = () => {
@@ -19,15 +19,8 @@ const App = () => {
 
   //user
   useEffect(() => {
-    const unsubscripbe = onAuthStateChangedListener((user) => {
-        if(user) {
-            createUserDocumentFromAuth(user);
-        }  
-        dispatch(setCurrentUser(user));          
-    });
-
-    return unsubscripbe
-  },[dispatch]);
+    dispatch(checkUserSession());
+  },[]);
 
 
   return (

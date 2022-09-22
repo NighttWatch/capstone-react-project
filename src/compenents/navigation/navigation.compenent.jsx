@@ -1,6 +1,6 @@
 import { Fragment } from 'react';
 import { Outlet, Link } from 'react-router-dom';
-import { useSelector } from 'react-redux' 
+import { useSelector, useDispatch } from 'react-redux' 
 //is a hook that you pass a selector function, selector function is something that essantially extracts off the values that you want from the whole entire redux.
 
 import CartIcon from '../cart-icon/cart-icon.compenent';
@@ -11,14 +11,18 @@ import { ReactComponent as CrwnLogo } from '../../assets/crown.svg';
 import { selectIsCartOpen } from '../../store/cart/cart.selector';
 import { selectCurrentUser } from '../../store/user/user.selector';
 
-import { signOutUser } from '../../utils/firebase/firebase.utils';
+import { signOutStart } from '../../store/user/user.action';
 
 import { NavigationContainer, NavLink, NavLinks, LogoContainer } from './navigation.styles';
 
 // A fragment is usefull if you don't actually want to render some spesific moment.
 const Navigation = () => {
-  const currentUser = useSelector(selectCurrentUser)
-  const isCartOpen  = useSelector(selectIsCartOpen)
+  const dispatch = useDispatch();
+  const currentUser = useSelector(selectCurrentUser);
+  console.log("navigation",currentUser);
+  const isCartOpen  = useSelector(selectIsCartOpen);
+
+  const signOutUser = () => dispatch(signOutStart());
 
     return (
       <Fragment>
